@@ -3,28 +3,42 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>YOUR VISUALIZATION TITLE HERE</title>
+    <title>Twitter Sentiment Visualization</title>
 
     <!--bootstrap for styling-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+     #searchBox { max-width: 30%; }
+     #searchButton {height: 28px;}
+     p.bottomline {position:fixed; left:10px; bottom: 20px;}
+     p.note{position:fixed;left:10px;bottom:40px;}
+    </style>
 </head>
 <body>    
     <div class="container"> <!-- content -->
-        <h1>YOUR VISUALIZATION TITLE HERE</h1>
-        <p class="lead">By YOUR NAMES HERE</p>
+        <h1>Twitter Account Sentiment Visualization</h1>
+        <p class="lead">By Ying Yang</p>
 
         <!-- more html content can go here; e.g., any data explanation -->
+
+        <div class="input-field">
+            <i class="fa fa-user fa-2x prefix" aria-hidden="true"></i>
+            <input name="query" placeholder="Twitter usrname to analyze..." id="searchBox">
+            <button id="searchButton" class="btn"><i class="fa fa-search" aria-label="search button">search</i></button>
+        </div>
 
         <div id="visContainer"> <!-- A container to hold the visualization -->
         </div>
 
         <!-- more html content can go here, e.g., further details -->
-
-        <p id="citation">Data from ...</p>
+        <p id="note" class="note">* The percentage shows ratio of each kind of emotional words in total words. The sum is not 100%.(Some words of the tweets are not emotional.) </p>
+        <p id="citation" class="bottomline">Data from twitter.com</p>
     </div>
 
     <!-- JavaScript modules -->
     <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="data/sentiments_nrc.js"></script>
+    <script src="data/uw_ischool_sample.js"></script>
     <script src="visualization.js"></script>
 </body>
 </html>
