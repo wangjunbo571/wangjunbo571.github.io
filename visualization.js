@@ -160,17 +160,30 @@ function drawPieChart(chart_data){
 	var g = svg.selectAll(".arc")
 	    .data(pie(dataset))
 	  .enter().append("g")
-	    .attr("class","arc");
+	    .attr("class","arc")
 	g.append("path")
 	 .attr("d",arc)
 	 .style("fill", function(d,i){return color(i);})
-	 .style("opacity", "0.6");
+	 .style("opacity", "0.85");
+	g.on("mouseover", function(d){
+		d3.select(this).style("opacity", "0.6");
+	}).on("mouseout", function(d){
+		d3.select(this).style("opacity","1.0");
+	});
 	g.append("text")
 	 .attr("transform", function(d){return "translate(" + labelArc.centroid(d)+")";})
-	 .attr("dy", ".35em")
+	 //.attr("dy", ".100em")
 	 .data(labelset)
 	 .text(function(d){return d;})
-	 .style("fill","black");
+	 .style("fill","black")
+	 .style("font-size", "13px")
+	 .style("font-weight","bold")
+	 .on("mouseover", function(d){
+		 d3.select(this).style("fill", "red").style("font-size", "20px");
+	 })
+	 .on("mouseout", function(d){
+		 d3.select(this).style("fill", "black").style("font-size", "13px");
+	 });
 }
 
 function loadTweets(username){
